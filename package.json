@@ -1,0 +1,35 @@
+{
+  "name": "node-red-contrib-hearth-link",
+  "version": "0.1.0",
+  "description": "node-red-contrib-hearth-link is a Node-RED node to send/receive a msg to/from another device through a common MQTT broker",
+  "keywords": [
+    "node-red",
+    "nodes",
+    "mqtt",
+    "thethingbox",
+    "timesquair"
+  ],
+  "main": "none",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "node-red": {
+    "nodes": {
+      "hearth-link": "nodes/hearth-link.js"
+    }
+  },
+  "dependencies": {
+    "is-utf8": "0.2.1",
+    "mustache": "3.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thethingbox/node-red-contrib-hearth-link.git"
+  },
+  "author": "thethingbox <thethingbox@gmail.com> (http://thethingbox.io/)",
+  "license": "http://www.wtfpl.net",
+  "bugs": {
+    "url": "https://github.com/TheThingBox/node-red-contrib-hearth-link/issues"
+  },
+  "homepage": "https://github.com/TheThingBox/node-red-contrib-hearth-link#readme"
+}

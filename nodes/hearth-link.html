@@ -1,0 +1,174 @@
+<!----------------------------------------------------------------------------->
+<!---------------                 HEARTH LINK IN                 -------------->
+<!----------------------------------------------------------------------------->
+<script type="text/x-red" data-template-name="hearth-link-in">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="hearth-link.label.name"></span></label>
+    <input type="text" id="node-input-name" data-i18n="[placeholder]hearth-link.label.name">
+  </div>
+  <div class="form-row">
+    <ul style="background: #fff; min-width: 600px; margin-bottom: 20px;" id="hearth-link-in-tabs"></ul>
+  </div>
+  <div id="hearth-link-in-tabs-content" style="min-height: 170px;">
+    <div id="hearth-link-in-tab-configuration" style="display:none">
+      <div class="form-row">
+        <label for="node-input-topic"><i class="fa fa-tag"></i> <span data-i18n="hearth-link.label.topic"></span></label>
+        <input type="text" id="node-input-topic">
+      </div>
+      <div class="form-row">
+        <label for="node-input-key"><i class="fa fa-tag"></i> <span data-i18n="hearth-link.label.key"></span></label>
+        <input type="text" id="node-input-key">
+      </div>
+    </div>
+    <div id="hearth-link-in-tab-advanced" style="display:none">
+      <div class="form-row">
+        <label for="node-input-broker"><i class="fa fa-globe"></i> <span data-i18n="hearth-link.label.broker"></span></label>
+        <input type="text" id="node-input-broker">
+      </div>
+      <div class="form-row">
+        <label for="node-input-qos"><i class="fa fa-empire"></i> <span data-i18n="hearth-link.label.qos"></span></label>
+        <select id="node-input-qos" style="width:125px !important">
+          <option value=""></option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="hearth-link-in">
+</script>
+
+<script type="text/javascript">
+  RED.nodes.registerType('hearth-link-in', {
+    category: 'basic',
+    color: '#FFF',
+    icon: 'link-out.png',
+    align: "right",
+    inputs: 0,
+    outputs: 1,
+    defaults: {
+      name: {value: ""},
+      topic: {value: "", required: true},
+      key: {value: ""},
+      qos: {value: "0"},
+      broker: {value: "MQTT.Online", type: "mqtt-broker", required: true}
+    },
+    paletteLabel: 'hearth link',
+    label: function(){
+      return this.name || this.topic || 'hearth link'
+    },
+    labelStyle: function() {
+      return (this.name||this.topic) ? 'node_label_italic' : '';
+    },
+    oneditprepare: function() {
+      var tabs = RED.tabs.create({
+        id: "hearth-link-in-tabs",
+        onchange: function(tab) {
+          $("#hearth-link-in-tabs-content").children().hide();
+          $("#" + tab.id).show();
+        }
+      });
+      tabs.addTab({
+        id: "hearth-link-in-tab-configuration",
+        label: this._("hearth-link.tabs-label.configuration")
+      });
+      tabs.addTab({
+        id: "hearth-link-in-tab-advanced",
+        label: this._("hearth-link.tabs-label.advanced")
+      });
+    }
+  })
+</script>
+
+<!----------------------------------------------------------------------------->
+<!---------------                 HEARTH LINK OUT                -------------->
+<!----------------------------------------------------------------------------->
+<script type="text/x-red" data-template-name="hearth-link-out">
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="hearth-link.label.name"></span></label>
+    <input type="text" id="node-input-name" data-i18n="[placeholder]hearth-link.label.name">
+  </div>
+  <div class="form-row">
+    <ul style="background: #fff; min-width: 600px; margin-bottom: 20px;" id="hearth-link-out-tabs"></ul>
+  </div>
+  <div id="hearth-link-out-tabs-content" style="min-height: 170px;">
+    <div id="hearth-link-out-tab-configuration" style="display:none">
+      <div class="form-row">
+        <label for="node-input-topic"><i class="fa fa-tag"></i> <span data-i18n="hearth-link.label.topic"></span></label>
+        <input type="text" id="node-input-topic">
+      </div>
+      <div class="form-row">
+        <label for="node-input-key"><i class="fa fa-tag"></i> <span data-i18n="hearth-link.label.key"></span></label>
+        <input type="text" id="node-input-key">
+      </div>
+    </div>
+    <div id="hearth-link-out-tab-advanced" style="display:none">
+      <div class="form-row">
+        <label for="node-input-broker"><i class="fa fa-globe"></i> <span data-i18n="hearth-link.label.broker"></span></label>
+        <input type="text" id="node-input-broker">
+      </div>
+      <div class="form-row">
+        <label for="node-input-qos"><i class="fa fa-empire"></i> <span data-i18n="hearth-link.label.qos"></span></label>
+        <select id="node-input-qos" style="width:125px !important">
+          <option value=""></option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select>
+        &nbsp;&nbsp;<i class="fa fa-history"></i>&nbsp;<span data-i18n="hearth-link.label.retain"></span> &nbsp;<select id="node-input-retain" style="width:125px !important">
+          <option value=""></option>
+          <option value="false" data-i18n="hearth-link.label.false"></option>
+          <option value="true" data-i18n="hearth-link.label.true"></option>
+        </select>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="hearth-link-out">
+</script>
+
+<script type="text/javascript">
+  RED.nodes.registerType('hearth-link-out', {
+    category: 'basic',
+    color: '#FFF',
+    icon: 'link-out.png',
+    inputs: 1,
+    outputs: 0,
+    defaults: {
+      name: {value: ""},
+      topic: {value: ""},
+      key: {value: ""},
+      qos: {value: "0"},
+      retain: {value: "false"},
+      broker: {value: "MQTT.Online", type: "mqtt-broker", required: true}
+    },
+    paletteLabel: 'hearth link',
+    label: function(){
+      return this.name || this.topic || 'hearth link'
+    },
+    labelStyle: function() {
+      return (this.name||this.topic) ? 'node_label_italic' : '';
+    },
+    oneditprepare: function() {
+      var tabs = RED.tabs.create({
+        id: "hearth-link-out-tabs",
+        onchange: function(tab) {
+          $("#hearth-link-out-tabs-content").children().hide();
+          $("#" + tab.id).show();
+        }
+      });
+      tabs.addTab({
+        id: "hearth-link-out-tab-configuration",
+        label: this._("hearth-link.tabs-label.configuration")
+      });
+      tabs.addTab({
+        id: "hearth-link-out-tab-advanced",
+        label: this._("hearth-link.tabs-label.advanced")
+      });
+    }
+  })
+</script>
