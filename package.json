@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-hearth-link",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "node-red-contrib-hearth-link is a Node-RED node to send/receive a msg to/from another device through a common MQTT broker",
   "keywords": [
     "node-red",
