@@ -4,6 +4,8 @@
 
 [![NPM](https://nodei.co/npm/node-red-contrib-hearth-link.png)](https://nodei.co/npm/node-red-contrib-hearth-link/)
 
+![npm](https://img.shields.io/npm/v/node-red-contrib-hearth-link.svg)
+
 ### node-red-contrib-hearth-link
 
 node-red-contrib-hearth-link is a Node-RED node to send/receive a msg to/from another device through a common MQTT broker.
