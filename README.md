@@ -6,6 +6,10 @@
 
 ![npm](https://img.shields.io/npm/v/node-red-contrib-hearth-link.svg)
 
+# Deprecated
+
+This node is now deprecated, please use [ttb-node-jump](https://github.com/TheThingBox/ttb-node-jump) instead.
+
 ### node-red-contrib-hearth-link
 
 node-red-contrib-hearth-link is a Node-RED node to send/receive a msg to/from another device through a common MQTT broker.
